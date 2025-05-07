@@ -46,7 +46,7 @@ class Command(BaseCommand):
             verify_user_uuid(user_uuid)
             verify_csv_file(file_suffix)
             user_model = get_user_model()
-            user, created = user_model.objects.get_or_create(pk=user_uuid)
+            user, created = user_model.objects.get_or_create(id=user_uuid, username=user_uuid)
 
             with open(csv_filename) as csv_file:
                 reader = csv.reader(csv_file)

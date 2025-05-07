@@ -38,4 +38,4 @@ class GlucoseLevel(models.Model):
         """
         Representational string for object (for example for Admin)
         """
-        return f"{self.device} {self.serial_number} {self.timestamp}"
+        return f"{self.device} {self.serial_number} {self.device_timestamp}"
