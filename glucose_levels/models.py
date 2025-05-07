@@ -8,10 +8,12 @@ class GlucoseLevel(models.Model):
     serial_number = models.UUIDField(editable=False)
     device_timestamp = models.DateTimeField()
     record_type = models.IntegerField()
-    glucose_value_trend = models.IntegerField(db_comment="mg/dL")
+
+    # optional in import
+    glucose_value_trend = models.IntegerField(null=True, blank=True, db_comment="mg/dL")
+    glucose_scan = models.IntegerField(null=True, blank=True, db_comment="mg/dL")
 
     # not imported intitially
-    glucose_scan = models.IntegerField(null=True, blank=True, db_comment="mg/dL")
     nonnumeric_rapid_acting_insulin = models.CharField(null=True, blank=True)
     rapid_acting_insulin = models.IntegerField(
         null=True, blank=True, db_comment="units"
