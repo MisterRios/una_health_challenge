@@ -1,18 +1,34 @@
 import csv
+import datetime as dt
+import pathlib
+import uuid
 
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 
+from glucose_levels.models import GlucoseLevel
 
-def verify_csv_file(filename):
-    if filename.endswith(".csv"):
-        return True
-    return False
+
+def verify_csv_file(suffix):
+    if not suffix == ".csv":
+        raise CSVValidationError()
+
+
+def verify_user_uuid(user_uuid):
+    if not uuid.UUID(str(user_uuid)):
+        raise UserUUIDValidationError()
+
 
 class CSVValidationError(Exception):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.message = "File is not a csv file"
+
+
+class UserUUIDValidationError(Exception):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.message = "Filename does not contain valid user UUID"
 
 
 class Command(BaseCommand):
