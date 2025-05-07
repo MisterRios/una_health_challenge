@@ -16,6 +16,7 @@ class LevelsListView(ListAPIView):
     queryset = GlucoseLevel.objects.all()
 
 
-# class LevelsItemView(RetrieveAPIView):
-#     model = GlucoseLevel
-#     serializer_class = GlucoseLevelSerializer
+class LevelsItemView(RetrieveAPIView):
+    model = GlucoseLevel
+    serializer_class = GlucoseLevelSerializer
+    queryset = GlucoseLevel.objects.all()
