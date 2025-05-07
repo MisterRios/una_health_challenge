@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "users",
-    "glucose_levels"
+    "glucose_levels",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
